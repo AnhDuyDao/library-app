@@ -1,6 +1,7 @@
 package com.duyanh.spring_boot_library.config;
 
 import com.duyanh.spring_boot_library.entity.Book;
+import com.duyanh.spring_boot_library.entity.Review;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.HttpHeadersPreparer;
@@ -19,7 +20,9 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
                 HttpMethod.DELETE,
                 HttpMethod.PUT };
         config.exposeIdsFor(Book.class);
+        config.exposeIdsFor(Review.class);
         disableHttpMethods(Book.class, config, theUnsupportedActions);
+        disableHttpMethods(Review.class, config, theUnsupportedActions);
         /* Configure CORS Mapping*/
         cors.addMapping(config.getBasePath() + "/**")
                 .allowedOrigins(theAllowedOrigins);
