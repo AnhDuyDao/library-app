@@ -31,7 +31,7 @@ export const CheckoutAndReviewBox = (props: { book: BookModel | undefined, mobil
                         </p>
                     </div>
                 </div>
-                <Link to='#' className="btb btn-success btn-lg">Sign in</Link>
+                <Link to='#' className="btn btn-success btn-lg">Sign in</Link>
                 <hr />
                 <p className="mt-3">
                     This number can changed until placing order has been complete.
