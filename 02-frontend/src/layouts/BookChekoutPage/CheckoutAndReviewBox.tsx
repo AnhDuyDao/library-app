@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import BookModel from "../../models/BookModel";
+import { LeaveAReview } from "../Utils/LeaveAReview";
 
 export const CheckoutAndReviewBox = (props: {
     book: BookModel | undefined, mobile: boolean,
     currentLoansCount: number, isAuthentication: any, isCheckedOut: boolean,
-    checkoutBook: any
+    checkoutBook: any, isReviewLeft: boolean, submitReview: any
 }) => {
 
     function buttonRender() {
@@ -18,6 +19,25 @@ export const CheckoutAndReviewBox = (props: {
             }
         }
         return (<Link to={'/login'} className="btn btn-success btn-lg">Sign in</Link>)
+    }
+
+    function reviewRender() {
+        if (props.isAuthentication && !props.isReviewLeft) {
+            return (
+                <LeaveAReview submitReview={props.submitReview} />
+            )
+        } else if (props.isAuthentication && props.isReviewLeft) {
+            return (
+                <p>
+                    <b>Thank you for your review</b>
+                </p>
+            )
+        }
+        return (
+            <div>
+                <hr />
+                <p>Sign in to be able to leave a review</p>
+            </div>)
     }
 
     return (
@@ -54,9 +74,7 @@ export const CheckoutAndReviewBox = (props: {
                 <p className="mt-3">
                     This number can changed until placing order has been complete.
                 </p>
-                <p>
-                    Sign in to be able to leave a review
-                </p>
+                {reviewRender()}
             </div>
         </div>
     );

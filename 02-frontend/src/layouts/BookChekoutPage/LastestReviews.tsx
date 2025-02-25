@@ -15,7 +15,7 @@ export const LastestReviews = (props: { reviews: ReviewModel[], bookId: number |
                             <Review review={eachReview} key={eachReview.id}></Review>
                         ))}
                         <div className="m-3">
-                            <Link to="#" type="button" className="btn main-color btn-md text-white">
+                            <Link to={`/reviewlist/${props.bookId}`} type="button" className="btn main-color btn-md text-white">
                                 Reach all reviews
                             </Link>
                         </div>
