@@ -28,7 +28,10 @@ public class BookService {
     private HistoryRepository historyRepository;
 
 
-    public BookService(BookRepository bookRepository, CheckoutRepository checkoutRepository, HistoryRepository historyRepository) {
+
+
+    public BookService(BookRepository bookRepository, CheckoutRepository checkoutRepository,
+                       HistoryRepository historyRepository) {
         this.bookRepository = bookRepository;
         this.checkoutRepository = checkoutRepository;
         this.historyRepository = historyRepository;
@@ -116,6 +119,7 @@ public class BookService {
 
         bookRepository.save(book.get());
         checkoutRepository.deleteById(validateCheckout.getId());
+
         History history = new History(
                 userEmail,
                 validateCheckout.getCheckoutDate(),
@@ -125,9 +129,7 @@ public class BookService {
                 book.get().getDescription(),
                 book.get().getImg()
         );
-
         historyRepository.save(history);
-
     }
 
     public void renewLoan(String userEmail, Long bookId) throws Exception {
