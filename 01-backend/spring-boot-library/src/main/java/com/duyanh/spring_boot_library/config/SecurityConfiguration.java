@@ -24,7 +24,8 @@ public class SecurityConfiguration {
                         //.requestMatchers("/api/books/**").permitAll()
                         .requestMatchers("/api/books/secure/**",
                                 "/api/reviews/secure/**",
-                                "/api/messages/secure/**")
+                                "/api/messages/secure/**",
+                                "/api/admin/secure/**")
                         .authenticated()
                         .anyRequest().permitAll())
                 .oauth2ResourceServer((oauth2) -> oauth2
