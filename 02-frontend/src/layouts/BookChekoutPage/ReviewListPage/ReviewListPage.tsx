@@ -22,7 +22,7 @@ export const ReviewListPage = () => {
     // Fetch review book useEffect
     useEffect(() => {
         const fetchBookReviews = async () => {
-            const reviewUrl: string = `http://localhost:8080/api/reviews/search/findByBookId?bookId=${bookId}&page=${currentPage - 1}&size=${reviewsPerPage}`;
+            const reviewUrl: string = `${process.env.REACT_APP_API}/reviews/search/findByBookId?bookId=${bookId}&page=${currentPage - 1}&size=${reviewsPerPage}`;
             const responseReviews = await fetch(reviewUrl);
             if (!responseReviews.ok) {
                 throw new Error("Something went wrong!");
