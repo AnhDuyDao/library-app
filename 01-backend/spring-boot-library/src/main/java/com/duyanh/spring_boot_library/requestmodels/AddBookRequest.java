@@ -15,4 +15,6 @@ public class AddBookRequest {
     private String category;
 
     private String img;
+
+    private String pdfUrl;
 }

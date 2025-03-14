@@ -39,4 +39,6 @@ public class Book {
     @Column(name = "img")
     private String img;
 
+    @Column(name = "pdf_url")
+    private String pdfUrl;
 }
