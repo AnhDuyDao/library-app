@@ -1,6 +1,35 @@
-# Getting Started with Create React App
+# Library Management Application Frontend
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Environment Configuration
+
+The application uses environment variables for configuration. Create a `.env` file in the root directory with the following variables:
+
+```
+SSL_CRT_FILE=ssl-localhost/localhost.crt
+SSL_KEY_FILE=ssl-localhost/localhost.key
+
+REACT_APP_API='https://localhost:8443/api'
+
+# Cloudinary configuration
+REACT_APP_CLOUDINARY_CLOUD_NAME=your_cloud_name
+REACT_APP_CLOUDINARY_UPLOAD_PRESET=your_upload_preset
+```
+
+### Cloudinary Setup
+
+The application uses Cloudinary for storing PDF files. To set up Cloudinary:
+
+1. Create a Cloudinary account at [https://cloudinary.com/](https://cloudinary.com/)
+2. Create an upload preset in your Cloudinary dashboard:
+   - Go to Settings > Upload
+   - Scroll down to "Upload presets"
+   - Click "Add upload preset"
+   - Set "Signing Mode" to "Unsigned"
+   - Configure other settings as needed
+   - Save the preset name
+3. Update the `.env` file with your Cloudinary cloud name and upload preset
 
 ## Available Scripts
 

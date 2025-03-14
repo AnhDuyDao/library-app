@@ -5,6 +5,7 @@ class AddBookRequest {
    copies: number;
    category: string;
    img?: string;
+   pdfUrl?: string;
 
    constructor(tile: string, author: string, description: string,
       copies: number, category: string) {

@@ -59,6 +59,7 @@ export const SearchBookPage = () => {
                copiesAvailable: responseData[key].copiesAvailable,
                category: responseData[key].category,
                img: responseData[key].img,
+               pdfUrl: responseData[key].pdfUrl,
             });
          }
          setBooks(loadedBooks);

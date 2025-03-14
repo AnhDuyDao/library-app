@@ -14,16 +14,16 @@ import { ShelfPage } from './layouts/ShelfPage/ShelfPage';
 import { MessagesPage } from './layouts/MessagesPage/MessagesPage';
 import { ManageLibraryPage } from './layouts/ManageLibraryPage/ManageLibraryPage';
 import { PaymentPage } from './layouts/PaymentPage/PaymentPage';
+import { ReadBookPage } from './layouts/BookChekoutPage/ReadBookPage';
 
 const oktaAuth = new OktaAuth(oktaConfig);
 
 export const App = () => {
+  const history = useHistory();
 
   const customAuthHandler = () => {
     history.push('/login');
   }
-
-  const history = useHistory();
 
   const restoreOriginalUri = async (_oktaAuth: any, originalUri: any) => {
     history.replace(toRelativeUrl(originalUri || '/', window.location.origin));
@@ -72,6 +72,9 @@ export const App = () => {
             </SecureRoute>
             <SecureRoute path='/fees'>
               <PaymentPage />
+            </SecureRoute>
+            <SecureRoute path='/book/:bookId'>
+              <ReadBookPage />
             </SecureRoute>
           </Switch>
         </div>

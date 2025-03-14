@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import BookModel from "../../models/BookModel";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { SpinnerLoading } from "../Utils/SpinnerLoading";
 import { time } from "console";
 import { StarsReview } from "../Utils/StarsReview";
@@ -63,6 +63,7 @@ export const BookCheckoutPage = () => {
             copiesAvailable: responseJson.copiesAvailable,
             category: responseJson.category,
             img: responseJson.img,
+            pdfUrl: responseJson.pdfUrl,
          };
 
 
@@ -270,13 +271,20 @@ export const BookCheckoutPage = () => {
                </div>
             }
             <div className="row mt-5">
-               <div className="col-sm-2 col-md-2">
+               <div className="col-sm-2 col-md-3 text-center">
                   {book?.img ?
                      <img src={book?.img} width='226' height='349' alt="Book" />
                      :
                      <img src={require('./../../Images/BooksImages/book-luv2code-1000.png')}
                         width='226' height='349' alt="Book" />
                   }
+                  {isCheckedkOut && book?.pdfUrl && (
+                     <div className="text-center mt-3">
+                        <Link to={`/book/${book?.id}`} className="btn btn-success btn-lg">
+                           Read
+                        </Link>
+                     </div>
+                  )}
                </div>
                <div className="col-4 col-md-4 container">
                   <div className="ml-2">
