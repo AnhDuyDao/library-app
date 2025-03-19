@@ -1,6 +1,7 @@
 # Backend Configuration
 
 The application uses Okta for OAuth2 authentication. Update the following properties in src/main/resources/secrets.properties:
+
 okta.oauth2.client-id=your-okta-client-id
 okta.oauth2.issuer=your-okta-issuer
 
