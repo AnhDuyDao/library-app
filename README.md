@@ -1,3 +1,32 @@
+# Database Configuration
+
+## Overview
+This document provides instructions for configuring the database for the project. The database used is MySQL.
+
+## Prerequisites
+- Install MySQL Server
+- Install MySQL Workbench (optional, for GUI management)
+- Ensure that the MySQL service is running
+
+## Database Setup
+
+Running Database Scripts
+
+To set up the database schema, execute the SQL scripts in the Scripts folder in the following order:
+
+React-Springboot-Add-Tables-Script-1.sql
+
+React-Springboot-Add-Tables-Script-2.sql
+
+React-Springboot-Add-Tables-Script-3.sql
+
+React-Springboot-Add-Tables-Script-4.sql
+
+React-Springboot-Add-Tables-Script-5.sql
+
+Payment Script.sql
+
+
 # Backend Configuration
 
 The application uses **Okta** for OAuth2 authentication. Update the following properties in `src/main/resources/secrets.properties`:
