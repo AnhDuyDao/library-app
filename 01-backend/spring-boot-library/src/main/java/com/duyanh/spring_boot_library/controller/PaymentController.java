@@ -3,6 +3,7 @@ package com.duyanh.spring_boot_library.controller;
 import com.duyanh.spring_boot_library.requestmodels.PaymentInfoRequest;
 import com.duyanh.spring_boot_library.service.PaymentService;
 import com.duyanh.spring_boot_library.utils.ExtractJWT;
+import com.stripe.exception.StripeException;
 import com.stripe.model.PaymentIntent;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +21,7 @@ public class PaymentController {
 
     @PostMapping("/payment-intent")
     public ResponseEntity<String> createPaymentIntent(@RequestBody PaymentInfoRequest paymentInfoRequest)
-        throws Exception {
+        throws StripeException {
 
         PaymentIntent paymentIntent = paymentService.createPaymentIntent(paymentInfoRequest);
         String paymentStr = paymentIntent.toJson();

@@ -4,7 +4,9 @@ import com.duyanh.spring_boot_library.dao.PaymentRepository;
 import com.duyanh.spring_boot_library.entity.Payment;
 import com.duyanh.spring_boot_library.requestmodels.PaymentInfoRequest;
 import com.stripe.Stripe;
+import com.stripe.exception.StripeException;
 import com.stripe.model.PaymentIntent;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,12 +23,13 @@ import java.util.Map;
 public class PaymentService {
     private PaymentRepository paymentRepository;
 
+    @Autowired
     public PaymentService(PaymentRepository paymentRepository, @Value("${stripe.key.secret}") String secretKey) {
         this.paymentRepository = paymentRepository;
         Stripe.apiKey = secretKey;
     }
 
-    public PaymentIntent createPaymentIntent(PaymentInfoRequest paymentInfoRequest) throws Exception {
+    public PaymentIntent createPaymentIntent(PaymentInfoRequest paymentInfoRequest) throws StripeException {
         List<String> paymentMethodTypes = new ArrayList<>();
         paymentMethodTypes.add("card");
 
