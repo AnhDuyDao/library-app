@@ -130,7 +130,7 @@ export const PaymentPage = () => {
                </div>
             </div>
          }
-         {fees === 0 &&
+         {!fees && fees === 0 &&
             <div className="mt-3">
                <h5>You have no fees!</h5>
                <Link type="button" className="btn main-color text-white" to="search">

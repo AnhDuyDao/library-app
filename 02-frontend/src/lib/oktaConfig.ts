@@ -1,3 +1,5 @@
+import { features } from "process";
+
 export const oktaConfig = {
     clientId: '0oang9c05pmeVuFQ35d7',
     issuer: 'https://dev-15866290.okta.com/oauth2/default',
@@ -6,4 +8,5 @@ export const oktaConfig = {
     pkce: true,
     disableHttpsCheck: true,
     language: "en",
+    features: { registration: true }
 }
