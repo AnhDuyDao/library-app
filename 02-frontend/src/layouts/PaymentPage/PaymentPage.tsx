@@ -56,7 +56,7 @@ export const PaymentPage = () => {
          method: 'POST',
          headers: {
             Authorization: `Bearer ${authState?.accessToken?.accessToken}`,
-            "Content-Type": "aplication/json"
+            "Content-Type": "application/json"
          },
          body: JSON.stringify(paymentInfo)
       };

@@ -231,12 +231,42 @@ export const BookCheckoutPage = () => {
 
       const checkoutResponse = await fetch(url, requestOptions);
 
-      if (!checkoutResponse.ok) {
+      // if (!checkoutResponse.ok) {
+      //    setDisplayError(true);
+      //    throw new Error("Something went wrong!");
+      // }
+      // setDisplayError(false);
+      // setIsCheckedOut(true);
+      try {
+         const checkoutResponse = await fetch(url, requestOptions);
+
+         if (!checkoutResponse.ok) {
+            // Nếu lỗi là 400 hoặc 403, hiển thị lỗi liên quan đến sách quá hạn
+            if (checkoutResponse.status === 400 || checkoutResponse.status === 403) {
+               setDisplayError(true);
+               return;
+            }
+
+            // Nếu lỗi là 500, hiển thị thông báo chung mà không crash ứng dụng
+            if (checkoutResponse.status === 500) {
+               console.error("Server error (500): Checkout failed.");
+               setDisplayError(true);
+               return;
+            }
+
+            // Các lỗi khác, log ra console
+            console.error(`Checkout failed: ${checkoutResponse.status} ${checkoutResponse.statusText}`);
+            setDisplayError(true);
+            return;
+         }
+
+         // Nếu không có lỗi, đánh dấu sách đã được checkout
+         setDisplayError(false);
+         setIsCheckedOut(true);
+      } catch (error) {
+         console.error("Unexpected error during checkout:", error);
          setDisplayError(true);
-         throw new Error("Something went wrong!");
       }
-      setDisplayError(false);
-      setIsCheckedOut(true);
    }
 
    async function submitReview(starInput: number, reviewDescription: string) {
