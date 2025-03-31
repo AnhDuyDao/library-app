@@ -54,6 +54,7 @@ CLOUDINARY_API_SECRET=your-cloudinary-api-secret
 # Frontend Configuration
 ## Okta Configuration
 Go to Okta Dev [https://developer.okta.com] -> Sign up -> Sign In
+
 Create Okta Application: Home Page -> Application -> Create App Intergration
 - Choose OIDC-OpenID Connect and Single-Page Application then Next
 - App Intergration name: Your app name
@@ -92,6 +93,14 @@ Set up Security: Home Page -> Security -> API
 - Name: userType -> Value: (appuser!=null) ? appuser.userType : app.clientId -> Create
 - Trust Origin -> Add Origin -> Name: your-name -> Origin URL: [http://localhost:3000](http://localhost:3000) -> Choose Cors and Redirect 
 - Home Page -> People -> Admin User -> Profile -> Edit -> User type: admin
+
+Set up .env 
+```
+REACT_APP_API='http://localhost:8080/api'
+REACT_APP_URL='http://localhost:3000'
+REACT_APP_OKTA_CLIENT_ID=your-okta-client-id
+REACT_APP_OKTA_ISSUER=your-okta-issuer-url
+```
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
