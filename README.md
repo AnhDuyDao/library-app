@@ -52,7 +52,43 @@ CLOUDINARY_API_SECRET=your-cloudinary-api-secret
 
 
 # Frontend Configuration
-# Library Management Application Frontend
+## Okta Configuration
+Go to Okta Dev [https://developer.okta.com] -> Sign up -> Sign In
+Create Okta Application: Home Page -> Application -> Create App Intergration\
+- Choose OIDC-OpenID Connect and Single-Page Application then Next
+- App Intergration name: Your app name
+- Set up Sign-in redirect URLs: [http://localhost:3000/login/callback]
+- Set up Sign-out redirect URLs: [http://localhost:3000]
+- Base URLs: [http://localhost:3000]
+- Controlled access: Allow everyone in your organization to access
+- Client ID: your-client-id
+Create Profile Attributes: Home Page -> Profile Editor -> Your App User -> Add Attribute\
+- Data Type: string
+- Display name: UserType
+- Variable name: userType
+- Save
+- Back to Profile Editor -> Mappings
+- Choose Okta User to Your App
+- Choose an attribute or enter expression -> Choose user.userType
+- Click on the arrow -> Change it to Apply mapping on user create and update
+- Save Mappings -> Apply update now
+- Back to Profile Editor -> Mappings
+- Choose Your App to Okta User
+- Choose an attribute or enter expression -> Choose user.userType
+- Click on the arrow -> Change it to Apply mapping on user create and update
+- Save Mappings -> Apply update now
+Create ADMIN account: Home Page -> People -> Add person\
+- Fill the form
+- Password: Set by admin -> Enter password
+- Uncheck User must change password on first login
+- Save to create Admin account
+Set up Security: Home Page -> Security -> API\
+- Issuer URL: your-issuer-url
+- default -> claims -> Add Claim
+- Name: sub -> Value: (appuser!=null) ? appuser.userName : app.clientId -> Create
+- Name: userType -> Value: (appuser!=null) ? appuser.userType : app.clientId -> Create
+- Trust Origin -> Add Origin -> Name: your-name -> Origin URL: [http://localhost:3000] -> Choose Cors and Redirect 
+- Home Page -> People -> Admin User -> Profile -> Edit -> User type: admin
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
