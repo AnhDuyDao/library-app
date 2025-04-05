@@ -1,3 +1,11 @@
+<h1> Library App 📚 </h1> <br>
+
+![Library App](https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExYTdvd2NzZjBoa2ZvdjkxemVuMjU4bW96OG44OXMzank1a3IxczNqMiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/RfJejNCPXFyOZMmKd5/giphy.gif)
+
+Library App is a web application built with React, Spring Boot, Okta, and Stripe. It allows users to browse, read ,and check out books from the digital library. The app also includes an administrative dashboard to help library staff manage books, users, and checkouts efficiently.  
+
+The project includes features such as product listing, product details, book borrowing, Q&A section, admin dashboard, user authentication and authorization with Okta and checkout with Stripe payment.
+
 # Database Configuration
 
 ## Overview
